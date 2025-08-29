@@ -34,3 +34,11 @@ function searchMovie($title)
 
     return $data;
 }
+
+function logSearch($query)
+{
+    $config = include __DIR__ . '/config.php';
+    $date = date("d-m-Y H:i:s");
+    $line = "[$date] Recherche: " . $query . PHP_EOL;
+    file_put_contents($config['log_file'], $line, FILE_APPEND | LOCK_EX);
+}
